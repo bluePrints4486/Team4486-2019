@@ -12,7 +12,6 @@ public class RunOutake extends Command {
     public RunOutake() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
     	requires(Robot.intake);
     }
 
