@@ -5,20 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package org.usfirst.frc.team4486.robot.utilities;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.PIDOutput;
 
 /**
  * Add your docs here.
  */
-public class Drivetrain extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+public class PIDoutputWrapper implements PIDOutput{
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+    private double output = 0;
+
+    @Override
+    public void pidWrite(double output) {
+        this.output = output;
+    }
+
+    public double getOutput(){
+        return this.output;
+    }
+
 }

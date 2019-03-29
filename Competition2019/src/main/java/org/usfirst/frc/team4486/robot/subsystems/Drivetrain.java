@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4486.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import org.usfirst.frc.team4486.robot.OI;
 import org.usfirst.frc.team4486.robot.RobotMap;
 import org.usfirst.frc.team4486.robot.commands.*;
@@ -9,7 +11,6 @@ import org.usfirst.frc.team4486.robot.utilities.PIDsourceWrapper;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -32,23 +33,33 @@ public class Drivetrain extends Subsystem {
 	 PIDController visionController;
 	 
 	public Drivetrain(){
-		VictorSP doubleRightMotor = new VictorSP(RobotMap.DOUBLE_RIGHT_MOTOR);
-		VictorSP singleRightMotor = new VictorSP(RobotMap.SINGLE_RIGHT_MOTOR);
+		WPI_TalonSRX RightMotor0 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_0);
+		WPI_TalonSRX RightMotor1 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_1);
+		WPI_TalonSRX RightMotor2 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_2);
+
 		
-		SpeedControllerGroup scRight = new SpeedControllerGroup(doubleRightMotor,singleRightMotor);
+		SpeedControllerGroup scRight = new SpeedControllerGroup(RightMotor0,RightMotor1,RightMotor2);
 		
-		VictorSP doubleLeftMotor = new VictorSP(RobotMap.DOUBLE_LEFT_MOTOR);
-		VictorSP singleLeftMotor = new VictorSP(RobotMap.SINGLE_LEFT_MOTOR);
+		WPI_TalonSRX LeftMotor0 = new WPI_TalonSRX(RobotMap.LEFT_MOTOR_0);
+		WPI_TalonSRX LeftMotor1 = new WPI_TalonSRX(RobotMap.LEFT_MOTOR_1);
+		WPI_TalonSRX LeftMotor2 = new WPI_TalonSRX(RobotMap.LEFT_MOTOR_2);
+
 		
-		SpeedControllerGroup scLeft = new SpeedControllerGroup(doubleLeftMotor,singleLeftMotor); 
+		SpeedControllerGroup scLeft = new SpeedControllerGroup(LeftMotor0,LeftMotor1,LeftMotor2); 
 				
 	drive  = new DifferentialDrive(scLeft,scRight);
 	
-	drive.setMaxOutput(.25);
+	drive.setMaxOutput(.45);
 
 	}
 	
 	public void drive(){
+		if(OI.turboButton.get()){
+			drive.setMaxOutput(.65);
+		} else {
+			drive.setMaxOutput(.45);
+		}
+
 		drive.tankDrive(-OI.driver.getThrottle(), -OI.driver.getY());
 		
 		

@@ -18,21 +18,30 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	//drive speed controllers
-	public static final int DOUBLE_RIGHT_MOTOR = 0;
-	public static final int DOUBLE_LEFT_MOTOR = 2;
-	public static final int SINGLE_RIGHT_MOTOR = 1;
-	public static final int SINGLE_LEFT_MOTOR = 3;
+	public static final int RIGHT_MOTOR_0 = 7;
+	public static final int RIGHT_MOTOR_1 = 8;
+	public static final int RIGHT_MOTOR_2 = 9;
+	public static final int LEFT_MOTOR_0 = 4;
+	public static final int LEFT_MOTOR_1 = 5;
+	public static final int LEFT_MOTOR_2 = 6;
+
 	
 	//winch speed controllrs/ Intake Outake
 	
-	public static final int DOUBLE_WINCH_MOTOR = 4;
-	public static final int DOUBLE_PICKUP_MOTOR = 6;
-	public static final int PICKUP_WINCH = 7;
-	public static final int Z_BAR_WINCH = 8;
-	public static final int Z_BAR_WINCH_FRONT = 9;
+	public static final int WINCH_MOTOR_0 = 10;
+	public static final int WINCH_MOTOR_1 = 11;
+
+	public static final int PICKUP_MOTOR_BOTTOM = 0;
+	public static final int PICKUP_MOTOR_TOP = 1;
+
+	public static final int PICKUP_WINCH = 3;
 	
 	public static final int DRIVER_JOYSTICK = 0;
 	public static final int MANIPULATOR_JOYSTICK = 1;
+
+	public static final int Z_BAR_WINCH = 2;
+	public static final int Z_BAR_WINCH_FRONT = 12;
+	
 
 	//pnumatic solenoids
 	public static final int SNOUT_IN = 0;
@@ -49,12 +58,13 @@ public class RobotMap {
 	public static final int SNOUT_OPEN_BUTTON = 6;
 	public static final int SNOUT_CLOSE_BUTTON = 4;
 	public static final int UNLATCH_BUTTON = 12;
-	public static final int ZBAR_BUTTON_UP = 10;
-	public static final int ZBAR_BUTTON_DOWN = 11;
-	public static final int ZBARFRONT_BUTTON_UP = 13;
-	public static final int ZBARFRONT_BUTTON_DOWN =14;
 
 	public static final int AUTO_DRIVE_BUTTON = 5;
+	public static final int TURBO_BUTTON = 6;
+	public static final int ZBAR_BUTTON_UP = 7;
+	public static final int ZBAR_BUTTON_DOWN = 8;
+	public static final int ZBARFRONT_BUTTON_UP = 1;
+	public static final int ZBARFRONT_BUTTON_DOWN = 2;
 
 	//PID Constants
 	public static final double VISION_P = .4;

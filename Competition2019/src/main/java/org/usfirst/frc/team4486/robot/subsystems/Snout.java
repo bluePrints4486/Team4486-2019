@@ -8,30 +8,31 @@
 package org.usfirst.frc.team4486.robot.subsystems;
 
 import org.usfirst.frc.team4486.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class Latch extends Subsystem {
+public class Snout extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  DoubleSolenoid latchSolenoid = new DoubleSolenoid(RobotMap.LATCH_IN, RobotMap.LATCH_OUT);
+  DoubleSolenoid snoutSolenoid = new DoubleSolenoid(RobotMap.SNOUT_IN, RobotMap.SNOUT_OUT);
 
-  public void openLatch(){
-    latchSolenoid.set(DoubleSolenoid.Value.kForward);
+  public void openSnout(){
+    snoutSolenoid.set(DoubleSolenoid.Value.kForward);
   }
 
-  public void closeLatch(){
-    latchSolenoid.set(DoubleSolenoid.Value.kReverse);
+  public void closeSnout(){
+    snoutSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
+
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-   
   }
 }

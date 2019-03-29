@@ -7,31 +7,37 @@
 
 package org.usfirst.frc.team4486.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import org.usfirst.frc.team4486.robot.RobotMap;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import org.usfirst.frc.team4486.robot.commands.Zbarstop;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Add your docs here.
- */
-public class Latch extends Subsystem {
+
+public class Zbar extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
-  DoubleSolenoid latchSolenoid = new DoubleSolenoid(RobotMap.LATCH_IN, RobotMap.LATCH_OUT);
-
-  public void openLatch(){
-    latchSolenoid.set(DoubleSolenoid.Value.kForward);
+  WPI_TalonSRX zbarMotor = new WPI_TalonSRX(RobotMap.Z_BAR_WINCH);
+  public void up(){	
+		zbarMotor.set(.75);
+	}
+  
+  
+	public void down(){
+		zbarMotor.set(-.75);
+  }
+  
+  public void stop() {
+    zbarMotor.set(0);
   }
 
-  public void closeLatch(){
-    latchSolenoid.set(DoubleSolenoid.Value.kReverse);
-  }
-
+	
   @Override
   public void initDefaultCommand() {
+
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-   
+     setDefaultCommand(new Zbarstop());
   }
+
 }

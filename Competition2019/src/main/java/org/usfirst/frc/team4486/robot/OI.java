@@ -13,7 +13,9 @@ import org.usfirst.frc.team4486.robot.commands.RunOutake;
 import org.usfirst.frc.team4486.robot.commands.WinchPickupDown;
 import org.usfirst.frc.team4486.robot.commands.WinchPickupUp;
 import org.usfirst.frc.team4486.robot.commands.Zbardown;
+import org.usfirst.frc.team4486.robot.commands.ZbardownFront;
 import org.usfirst.frc.team4486.robot.commands.Zbarup;
+import org.usfirst.frc.team4486.robot.commands.ZbarupFront;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -52,6 +54,7 @@ public class OI {
 	public static Joystick manipulator = new Joystick(RobotMap.MANIPULATOR_JOYSTICK);
 
 	public static JoystickButton autoDriveButton = new JoystickButton(driver,RobotMap.AUTO_DRIVE_BUTTON);
+	public static JoystickButton turboButton = new JoystickButton(driver, RobotMap.TURBO_BUTTON);
 	
 	public static JoystickButton intakeButton = new JoystickButton(manipulator,RobotMap.INTAKE_BUTTON);
 	public static JoystickButton outakeButton = new JoystickButton(manipulator,RobotMap.OUTTAKE_BUTTON);
@@ -64,11 +67,11 @@ public class OI {
 	public static JoystickButton snout_InButton = new JoystickButton(manipulator,RobotMap.SNOUT_CLOSE_BUTTON);
 	public static JoystickButton snout_OpenButton = new JoystickButton(manipulator,RobotMap.SNOUT_OPEN_BUTTON);
 
-	public static JoystickButton zButtonUpButton = new JoystickButton(manipulator, RobotMap.ZBAR_BUTTON_DOWN);
-	public static JoystickButton zButtonDownButton = new JoystickButton(manipulator, RobotMap.ZBAR_BUTTON_UP);
+	public static JoystickButton zBarUpButton = new JoystickButton(driver, RobotMap.ZBAR_BUTTON_UP);
+	public static JoystickButton zBarDownButton = new JoystickButton(driver, RobotMap.ZBAR_BUTTON_DOWN);
 
-	public static JoystickButton zButtonFrontUpButton = new JoystickButton(manipulator, RobotMap.ZBARFRONT_BUTTON_DOWN);
-	public static JoystickButton zButtonFrontDownButton = new JoystickButton(manipulator, RobotMap.ZBARFRONT_BUTTON_UP);  
+	public static JoystickButton zBarFrontUpButton = new JoystickButton(driver, RobotMap.ZBARFRONT_BUTTON_UP);
+	public static JoystickButton zBarFrontDownButton = new JoystickButton(driver, RobotMap.ZBARFRONT_BUTTON_DOWN);  
 
 	public OI(){
 
@@ -85,12 +88,11 @@ public class OI {
 		snout_InButton.whenPressed(new OpenSnout());
 		snout_OpenButton.whenPressed(new CloseSnout());
 
-		zButtonUpButton.whileHeld(new Zbarup());
-		zButtonDownButton.whileHeld(new Zbardown());
+		zBarUpButton.whileHeld(new Zbarup());
+		zBarDownButton.whileHeld(new Zbardown());
 
-		zButtonFrontDownButton.whileHeld(new Zbardown());
-		zButtonFrontUpButton.whileHeld(new Zbarup());
-		
+		zBarFrontDownButton.whileHeld(new ZbardownFront());
+		zBarFrontUpButton.whileHeld(new ZbarupFront());
 		
 	}
 	
